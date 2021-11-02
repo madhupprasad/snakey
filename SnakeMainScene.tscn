@@ -1,0 +1,132 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sound/crunch.wav" type="AudioStream" id=1]
+[ext_resource path="res://GameController.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/bg.jpg" type="Texture" id=4]
+[ext_resource path="res://Sound/highscore.wav" type="AudioStream" id=5]
+
+[sub_resource type="Theme" id=4]
+
+[node name="GameController" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="snake" type="Node" parent="."]
+
+[node name="body 0" type="TextureRect" parent="snake"]
+margin_left = 45.0775
+margin_top = 3.25993
+margin_right = 85.0775
+margin_bottom = 43.2599
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="body 1" type="ColorRect" parent="snake"]
+anchor_bottom = 0.002
+margin_left = 1.51982
+margin_top = 3.51985
+margin_right = 41.5198
+margin_bottom = 41.9199
+color = Color( 0.215686, 0.211765, 0.211765, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_left = -109.227
+margin_top = -44.3636
+margin_right = 908.773
+margin_bottom = 849.636
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food" type="Sprite" parent="."]
+position = Vector2( 280.962, 99.5338 )
+offset = Vector2( 20, 20 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+
+[node name="highscoreAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="score" type="Label" parent="."]
+margin_left = 663.97
+margin_top = 44.1799
+margin_right = 745.97
+margin_bottom = 80.1799
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "SCORE:0"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jei" type="Button" parent="."]
+margin_left = 315.959
+margin_top = 359.756
+margin_right = 496.959
+margin_bottom = 421.756
+text = "Play as Jeivardan"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pavan" type="Button" parent="."]
+margin_left = 315.959
+margin_top = 439.923
+margin_right = 496.959
+margin_bottom = 501.923
+text = "Play as Pavan"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="highScore" type="Label" parent="."]
+margin_left = 656.018
+margin_top = 15.6469
+margin_right = 787.018
+margin_bottom = 54.6469
+theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "HIghScore:0"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 651.0
+margin_top = 13.0
+margin_right = 788.0
+margin_bottom = 83.0
+color = Color( 1, 1, 1, 0.117647 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="infBox" type="CheckBox" parent="."]
+margin_left = 315.959
+margin_top = 522.022
+margin_right = 488.959
+margin_bottom = 572.022
+text = "INFINITY MODE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
